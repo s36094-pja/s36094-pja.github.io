@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<header style="background-color: black;
+color:white; font-weight: bold;">
+ <H1>My colorful page</H1>
+</header>
+<body>
+ <p>Some text Some text Some text.</p>
+</body>
+<footer style="background-color: blue;
+color:lightgray;">
+ <p>Author: me</p>
+</footer>
+</html>
