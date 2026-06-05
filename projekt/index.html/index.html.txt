@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
-<header style="background-color: black;
-color:white; font-weight: bold;">
- <H1>My colorful page</H1>
-</header>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Starve - Wilson's Journal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
 <body>
- <p>Some text Some text Some text.</p>
+
+    <!-- TUTAJ HERO -->
+
+    <header class="hero">
+
+        <nav>
+            <a href="index.html">Journal</a>
+            <a href="characters.html">Survivors</a>
+            <a href="crafting.html">Crafting</a>
+        </nav>
+
+        <div class="hero-content">
+
+            <h1>DON'T STARVE</h1>
+
+            <h2>Wilson's Survival Journal</h2>
+
+            <a href="#journal" class="btn">
+                Enter The Constant
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- TU BĘDZIE DZIENNIK -->
+
+    <main>
+
+        <section id="journal">
+
+            <h2>Journal Entries</h2>
+
+            <article>
+                <h3>Day 1</h3>
+                <p>Found berries.</p>
+            </article>
+
+            <article>
+                <h3>Day 3</h3>
+                <p>Built my first torch.</p>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Imię Nazwisko</p>
+
+        <p>Numer albumu</p>
+
+    </footer>
+
 </body>
-<footer style="background-color: blue;
-color:lightgray;">
- <p>Author: me</p>
-</footer>
 </html>
