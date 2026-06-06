@@ -9,6 +9,13 @@
 </head>
 
 <body>
+ <!-- światełko kursora -->
+    <div id="cursor-light"></div>
+
+    <!-- Kursor -->
+    <div id="cursor-character">
+        <img src="images/torch.png" alt="torch">
+    </div>
 
     <!-- TUTAJ HERO -->
 
