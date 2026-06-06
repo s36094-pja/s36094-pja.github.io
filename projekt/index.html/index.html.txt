@@ -41,7 +41,7 @@
 
     </header>
 
-    <!-- TU BĘDZIE DZIENNIK -->
+    <!-- TU DZIENNIK -->
 
     <main>
 
@@ -65,9 +65,9 @@
 
     <footer>
 
-        <p>Imię Nazwisko</p>
+        <p>Hanna Stoikova</p>
 
-        <p>Numer albumu</p>
+        <p>s36094</p>
 
     </footer>
 
