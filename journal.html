@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <!-- GLOBALNY PRZEŁĄCZNIK ŚWIATŁA UV (Wymagany do działania stylów!) -->
+  <!-- GLOBALNY PRZEŁĄCZNIK ŚWIATŁA UV -->
   <input type="checkbox" id="uv-switch" class="uv-toggle-checkbox">
 
   <!-- PRZYCISK W ROGU EKRANU STYLIZOWANY NA WŁĄCZNIK -->
@@ -41,60 +41,36 @@
       <div class="journal-book" id="journalBook">
         <div class="journal-spread" id="journalSpread">
 
-          <!-- LEWA STRONA (Poprawnie domknięta) -->
+          <!-- LEWA STRONA -->
           <div class="journal-side left-side" id="leftSide">
             <img id="leftPage" src="img/journal-page-1.jpg" alt="Journal page" class="page-normal">
-            <img id="leftPageUV" src="img/journal-page-1-uv.jpg" alt="Journal page UV" class="page-uv">
-          </div> <!-- NAPRAWIONO: Dodano brakujące zamknięcie lewej strony -->
+            <img id="leftPageUV" src="img/journal-page-1-uv.png" alt="Journal page UV" class="page-uv">
+          </div>
 
           <!-- PRAWA STRONA -->
           <div class="journal-side right-side" id="rightSide">
-            <img id="rightPage" src="img/journal-page-2.jpg" alt="Journal page" class="page-normal"> <!-- NAPRAWIONO: Dodano klasę page-normal -->
-            <img id="rightPageUV" src="img/journal-page-2-uv.jpg" alt="Journal page UV" class="page-uv">
+            <img id="rightPage" src="img/journal-page-2.jpg" alt="Journal page" class="page-normal">
+            <img id="rightPageUV" src="img/journal-page-2-uv.png" alt="Journal page UV" class="page-uv">
           </div>
           
-        </div> <!-- Koniec #journalSpread -->
+        </div>
 
         <div class="cover-turn" id="journalCover">
           <div class="cover-front">
             <img src="img/journal-cover.jpg" alt="Journal 3 cover">
           </div>
         </div>
-      </div> <!-- Koniec #journalBook -->
+      </div>
 
       <div class="journal-note">
         <h2>Research Notes</h2>
-
         <article class="entry">
           <h3>Entry #1</h3>
-          <p>
-            The woods are strange. Every path seems to lead deeper into the
-            forest, as if the trees are rearranging themselves behind me.
-          </p>
+          <p>The woods are strange. Every path seems to lead deeper into the forest.</p>
         </article>
-
         <article class="entry">
           <h3>Entry #8</h3>
-          <p>
-            A six-fingered symbol was carved into old wood near the trail.
-            It does not look natural. Someone wanted it to be found.
-          </p>
-        </article>
-
-        <article class="entry">
-          <h3>Entry #17</h3>
-          <p>
-            Gnomes confirmed. Small, organized and more dangerous than they
-            look. They seem harmless until they move as one group.
-          </p>
-        </article>
-
-        <article class="entry">
-          <h3>Entry #29</h3>
-          <p>
-            Something lives underground. I heard scratching below the floorboards
-            near the Mystery Shack after midnight.
-          </p>
+          <p>A six-fingered symbol was carved into old wood near the trail.</p>
         </article>
       </div>
 
@@ -110,6 +86,7 @@
   </footer>
 
   <script>
+    // 1. Zwykłe strony dziennika (Upewnij się, czy mają format .jpg czy .png)
     const pages = [
       "img/journal-page-1.jpg",
       "img/journal-page-2.jpg",
@@ -125,10 +102,11 @@
       "img/journal-page-12.jpg"
     ];
 
-    // 2. NOWOŚĆ: Tablica z Twoimi fizycznymi plikami UV zapisanymi na sztywno
+    // 2. WAŻNE: Tutaj wpisz dokładne nazwy swoich plików UV z folderu 'img'!
+    // Jeśli Twoje pliki nazywają się np. "multi-bear.png", wpisz ją w odpowiednie miejsce.
     const pagesUV = [
       "img/journal-page-1-uv.jpg",
-      "img/journal-page-2-uv.jpg",
+      "img/journal-page-2-uv.jpg", 
       "img/journal-page-3-uv.jpg",
       "img/journal-page-4-uv.jpg",
       "img/journal-page-5-uv.jpg",
@@ -153,13 +131,16 @@
     const leftSide = document.getElementById("leftSide");
     const rightSide = document.getElementById("rightSide");
 
-    // Sztywne przypisanie bez używania funkcji .replace(), co omija blokadę bezpieczeństwa CORS
     function showPages() {
-      leftPage.src = pages[currentPage];
-      rightPage.src = pages[currentPage + 1];
-      
-      leftPageUV.src = pagesUV[currentPage];
-      rightPageUV.src = pagesUV[currentPage + 1];
+      // Zabezpieczenie przed wyjściem poza tablicę
+      if(currentPage < pages.length) {
+        leftPage.src = pages[currentPage];
+        leftPageUV.src = pagesUV[currentPage];
+      }
+      if(currentPage + 1 < pages.length) {
+        rightPage.src = pages[currentPage + 1];
+        rightPageUV.src = pagesUV[currentPage + 1];
+      }
     }
 
     journalCover.addEventListener("click", function () {
@@ -195,7 +176,7 @@
       }
     });
 
-    // Śledzenie pozycji myszki dla maski CSS
+    // Płynne śledzenie kursora myszy dla maski UV
     document.addEventListener('mousemove', (e) => {
       document.documentElement.style.setProperty('--pointer-x', e.clientX + 'px');
       document.documentElement.style.setProperty('--pointer-y', e.clientY + 'px');
