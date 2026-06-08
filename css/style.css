@@ -1,0 +1,1135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background-color: #080d0a;
+  color: #f4e6c1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  }
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 1rem 5%;
+  background-color: rgba(8, 13, 10, 0.85);
+  border-bottom: 2px solid #d6a84f;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: #f4e6c1;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border: 1px solid #d6a84f;
+  background-color: rgba(123, 30, 30, 0.7);
+  transition: 0.3s;
+}
+
+.main-nav a:hover {
+  background-color: #d6a84f;
+  color: #1b1009;
+}
+
+.logo {
+  width: 28rem;
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.forest-intro, .no-choice, .journal-found, .journal-page {
+  min-height: 100vh;
+  padding: 8rem 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.forest-intro {
+  background-image: url("../img/forest.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.no-choice {
+  background-color: #000;
+  color: #d8d8d8;
+}
+
+.journal-found {
+  background-color: #2a1b12;
+}
+
+.btn {
+  display: inline-block;
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: #7b1e1e;
+  color: #f4e6c1;
+  text-decoration: none;
+  border: 2px solid #d6a84f;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #d6a84f;
+  color: #1b1009;
+  transform: scale(1.05);
+}
+
+footer {
+  position: relative;
+  clear: both;
+  background-color: rgba(8, 13, 10, 0.95);
+  color: #f4e6c1;
+  text-align: center;
+  padding: 1.5rem 5%;
+  border-top: 2px solid #d6a84f;
+  z-index: 5;
+}
+
+footer p {
+  margin: 0;
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border: 1px solid #d6a84f;
+  background-color: rgba(123, 30, 30, 0.7);
+  font-weight: bold;
+}
+
+.journal-image-link {
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+.journal-cover-img {
+  width: 20rem;
+  max-width: 90%;
+  height: auto;
+  border: 0.3rem solid #d6a84f;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.journal-cover-img:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 3rem rgba(214, 168, 79, 0.8);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+}
+
+.journal-page {
+  background-color: #2a1b12;
+  color: #f4e6c1;
+}
+
+.flip-journal {
+  background:
+    radial-gradient(circle, rgba(214, 168, 79, 0.15), transparent 45%),
+    #2a1b12;
+}
+
+.intro-text {
+  max-width: 45rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.journal-book {
+  position: relative;
+  width: 32rem;
+  max-width: 90vw;
+  height: 42rem;
+  margin: 2rem auto;
+  perspective: 1800px;
+  transition: width 0.7s ease;
+}
+
+.journal-book.opened {
+  width: 64rem;
+  max-width: 95vw;
+}
+
+.journal-spread {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.journal-book.opened .journal-spread {
+  display: flex;
+}
+
+.journal-side {
+  width: 50%;
+  height: 100%;
+  background-color: #f4e6c1;
+  border: 0.25rem solid #7b1e1e;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.journal-side img,
+.cover-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-turn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32rem;
+  max-width: 90vw;
+  height: 42rem;
+  cursor: pointer;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+  z-index: 5;
+}
+
+.journal-book.opened .cover-turn {
+  transform: rotateY(-180deg);
+}
+
+.cover-front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border: 0.25rem solid #d6a84f;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.8);
+  background-color: #f4e6c1;
+}
+
+.cover-turn.hidden {
+  display: none;
+}
+
+.left-side {
+  transform-origin: right center;
+}
+
+.right-side {
+  transform-origin: left center;
+}
+
+.right-side.turn-forward {
+  transform: rotateY(-65deg);
+}
+
+.left-side.turn-back {
+  transform: rotateY(65deg);
+}
+
+.journal-note {
+  width: 100%;
+  max-width: 70rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #d8b875;
+  color: #2a1b12;
+  border: 0.25rem solid #7b1e1e;
+}
+
+.entry {
+  margin: 1rem 0;
+  padding: 1.2rem;
+  background-color: #f4e6c1;
+  border-left: 0.4rem solid #7b1e1e;
+  text-align: left;
+}
+
+.entry h3 {
+  color: #7b1e1e;
+  margin-top: 0;
+}
+
+.journal-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 12rem 5% 4rem 5%; 
+  }
+}
+
+.creatures-title{
+  text-align:center;
+  margin-top:120px;
+  color:#d6a84f;
+  font-size:3rem;
+}
+ /* ================= CAROUSEL ================= */
+
+.carousel-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  margin:50px auto;
+  max-width:1400px;
+}
+
+.carousel{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:25px;
+
+  overflow-x:auto;
+  flex-wrap:nowrap;
+
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+
+.carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.carousel-card {
+  width: 170px;
+  cursor: pointer;
+  opacity: 0.6;
+  transform: scale(1);
+  transition: 0.35s ease;
+  text-align: center;
+}
+
+.carousel-card img{
+  width:170px;
+  height:260px;
+  object-fit:cover;
+
+  border:3px solid transparent;
+  border-radius:12px;
+
+  box-shadow:0 0 20px rgba(214,168,79,.4);
+  display:block;
+
+  transition: 0.3s ease;
+}
+
+.carousel-card h3{
+  margin-top:10px;
+  color:#f4e6c1;
+}
+
+.carousel-card.active {
+  transform: scale(1.08);
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-card.active img {
+  border-color: #d6a84f;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* ================= TIP ================= */
+
+.carousel-tip{
+  text-align:center;
+  color:#d6a84f;
+  margin-bottom:80px;
+}
+
+/* ================= JOURNAL ================= */
+
+.journal-entry {
+  min-height: 100vh;
+  padding: 120px 8%;
+  border-top: 2px solid rgba(214,168,79,.2);
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  display: none;
+}
+
+.journal-entry.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= LAYOUT ================= */
+
+.entry-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* ================= IMAGES ================= */
+
+.entry-image img,
+.mini-gallery img{
+  display:block;
+}
+
+.entry-image img{
+  width:100%;
+  max-width:500px;
+
+  border:4px solid #d6a84f;
+  border-radius:15px;
+}
+
+/* ================= TEXT ================= */
+
+.entry-info h2{
+  color:#d6a84f;
+  font-size:3rem;
+}
+
+.entry-info p{
+  line-height:1.8;
+}
+
+/* ================= MINI GALLERY ================= */
+
+.mini-gallery{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.mini-gallery img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+
+  border:2px solid #d6a84f;
+  border-radius:10px;
+
+  transition:0.3s ease;
+}
+
+.mini-gallery img:hover{
+  transform:scale(1.08);
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-btn{
+  margin-bottom:40px;
+  padding:12px 25px;
+
+  background:#7b1e1e;
+  color:#f4e6c1;
+
+  border:2px solid #d6a84f;
+
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.back-btn:hover{
+  background:#d6a84f;
+  color:black;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+  .entry-layout{
+    grid-template-columns:1fr;
+  }
+
+  .entry-image{
+    text-align:center;
+  }
+
+  .entry-image img{
+    max-width:350px;
+  }
+}
+
+/* ==========================================================================
+   TABLICA ŚLEDCZEGO I TECZKI FBI (MYSTERIES.HTML)
+   ========================================================================== */
+
+.mysteries-page {
+  background-color: #15100c;
+  width: 100%;
+  padding-top: 8rem;
+  text-align: center;
+}
+
+.mysteries-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.mysteries-intro {
+  color: #d6a84f;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+/* --- STYLIZACJA TABLICY KORKOWEJ --- */
+.corkboard-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 3rem auto;
+  padding: 20px;
+  background: #4a2f13; /* Drewniana rama tablicy */
+  border: 15px solid #2a1a0a;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.corkboard {
+  width: 100%;
+  height: 600px;
+  background-image: url("../img/forest-bg.jpg"); /* Tekstura tablicy korkowej/lasu */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Wspólny styl dla przypiętych elementów tablicy */
+.board-item {
+  position: absolute;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.board-item:hover {
+  transform: scale(1.08) rotate(0deg) !important; /* Wyprostowanie elementu przy najechaniu */
+  box-shadow: 0 10px 25px rgba(214, 168, 79, 0.4);
+  z-index: 10;
+}
+
+/* Pozycjonowanie elementów asymetrycznych ze zdjęcia */
+.bill-photo {
+  top: 10%; left: 28%;
+  width: 160px; height: 160px;
+  border: 8px solid #fff;
+  transform: rotate(-5deg);
+}
+.bill-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.mcgucket-photo {
+  bottom: 15%; left: 10%;
+  width: 150px; height: 180px;
+  border: 8px solid #fff;
+  transform: rotate(6deg);
+}
+.mcgucket-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.note-yellow {
+  background-color: #f6e897;
+  color: #2a1a0a;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 1.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.author-note { top: 15%; left: 5%; width: 180px; height: 150px; transform: rotate(4deg); }
+.twins-note { bottom: 12%; left: 38%; width: 160px; height: 140px; transform: rotate(-8deg); }
+
+.note-white {
+  background-color: #f4f4f4;
+  color: #b01717;
+  font-size: 2.2rem;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  font-family: monospace;
+}
+.code-618 { top: 12%; right: 15%; transform: rotate(3deg); }
+
+/* Czerwone sznurki śledcze łączące dowody */
+.conspiracy-strings {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(circle, transparent 95%, rgba(176, 23, 23, 0.12) 100%);
+  pointer-events: none;
+}
+
+/* --- SEKCJA SZYFRÓW (CAESAR CIPHER) --- */
+.cipher-section {
+  max-width: 600px;
+  margin: 0 auto 5rem auto;
+  background-color: rgba(8, 13, 10, 0.7);
+  border: 1px dashed #d6a84f;
+  padding: 2rem;
+  border-radius: 4px;
+}
+.cipher-section h2 { margin-top: 0; color: #fff; }
+.encrypted-text { font-family: monospace; font-size: 1.3rem; color: #b01717; letter-spacing: 2px; margin: 1rem 0; }
+.cipher-hint { font-size: 0.9rem; font-style: italic; color: #a8b3ac; margin: 0; }
+
+
+/* ==========================================================================
+   INTERAKCJA :TARGET Z EFEKTEM WERYFIKACJI RZĄDOWEJ (FBI LOADING)
+   ========================================================================== */
+
+/* Całkowicie ukryte tło przyciemniające */
+.case-file-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Włączenie widoczności po kliknięciu linku */
+.case-file-overlay:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Komunikat ładowania systemowego – znika po 0.5s */
+.fbi-loading {
+  position: absolute;
+  font-family: monospace;
+  color: #b01717;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(176, 23, 23, 0.4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.case-file-overlay:target .fbi-loading {
+  animation: flashAndHide 0.5s ease-in-out forwards;
+}
+
+@keyframes flashAndHide {
+  0% { opacity: 0; transform: scale(0.95); }
+  20% { opacity: 1; transform: scale(1); }
+  85% { opacity: 1; filter: blur(0px); }
+  100% { opacity: 0; filter: blur(10px); transform: scale(1.05); }
+}
+
+/* Teczka śledcza FBI – czeka na schowana i wjeżdża po 0.5s */
+.fbi-folder {
+  background-color: #c3b091;
+  color: #1a1a1a;
+  width: 90%;
+  max-width: 800px;
+  height: 500px;
+  border-radius: 4px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.8) translateY(40px) rotateX(-15deg);
+}
+
+.case-file-overlay:target .fbi-folder {
+  /* Animacja trwa 0.5s i odpala się po 0.5s opóźnienia systemowego */
+  animation: openFolder 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0.5s forwards;
+}
+
+@keyframes openFolder {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateX(0deg);
+  }
+}
+
+/* Nagłówek teczki rządowej */
+.fbi-header {
+  background-color: #111625;
+  color: #fff;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #b01717;
+}
+
+.fbi-badge { font-size: 0.8rem; letter-spacing: 2px; color: #8b9bb4; font-weight: bold; }
+.fbi-header h2 { font-size: 1.3rem; margin: 0; letter-spacing: 1px; }
+
+.close-file-btn {
+  background-color: #b01717; color: #fff; text-decoration: none;
+  padding: 0.5rem 1rem; font-weight: bold; font-size: 0.85rem;
+  border-radius: 3px; transition: background-color 0.2s;
+}
+.close-file-btn:hover { background-color: #ff2424; }
+
+/* Zawartość wnętrza teczki */
+.fbi-content { display: flex; flex: 1; padding: 2.5rem; gap: 2.5rem; }
+.fbi-photos { flex: 1; max-width: 40%; display: flex; flex-direction: column; align-items: center; position: relative; }
+.fbi-photos img { width: 100%; height: 260px; object-fit: cover; border: 10px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+.stamp-classified {
+  color: #b01717; border: 4px solid #b01717; padding: 0.3rem 1rem;
+  font-size: 1.3rem; font-weight: bold; text-transform: uppercase;
+  transform: rotate(-15deg); margin-top: 1.5rem; letter-spacing: 3px;
+}
+
+.fbi-text { flex: 1; max-width: 60%; display: flex; flex-direction: column; justify-content: flex-start; text-align: left; }
+.fbi-text h3 { font-size: 1.8rem; margin: 0 0 1rem 0; border-bottom: 2px solid #111625; padding-bottom: 0.5rem; }
+.fbi-text p { font-size: 1rem; line-height: 1.6; margin: 0.6rem 0; }
+
+/* --- RESPONSOWNOŚĆ MOBILNA --- */
+@media (max-width: 768px) {
+  .corkboard { height: 450px; }
+  .bill-photo { width: 110px; height: 110px; top: 8%; left: 24%; }
+  .mcgucket-photo { width: 105px; height: 125px; bottom: 10%; left: 5%; }
+  .author-note { width: 130px; height: 110px; font-size: 0.85rem; }
+  .twins-note { width: 120px; height: 100px; font-size: 0.85rem; bottom: 8%; left: 36%; }
+  .code-618 { font-size: 1.6rem; padding: 0.5rem 1rem; top: 10%; right: 8%; }
+  
+  .fbi-folder { height: auto; max-height: 90vh; overflow-y: auto; }
+  .fbi-content { flex-direction: column; padding: 1.5rem; gap: 1.5rem; }
+  .fbi-photos { max-width: 100%; }
+  .fbi-photos img { height: 180px; }
+  .fbi-text { max-width: 100%; }
+}
+
+/* 1. Teczka Axolotl (Prawy dolny obszar tablicy) */
+.axolotl-file-icon {
+  bottom: 8%; right: 12%;
+  width: 170px; height: 130px;
+  background-color: #dbc9a7;
+  border: 2px solid #a49171;
+  border-radius: 4px;
+  padding: 8px;
+  flex-direction: column !important;
+  transform: rotate(4deg);
+}
+.axolotl-file-icon img {
+  width: 100%; height: 85px; object-fit: cover; border: 1px solid #7c6a4e;
+}
+.file-label {
+  font-size: 0.65rem; font-weight: bold; color: #463d2e; font-family: monospace; margin-top: 4px;
+}
+
+/* 2. Karteczka: Imię Dippera (Wolna przestrzeń po lewej stronie, lekko poniżej notatki Autora) */
+.dipper-name-note {
+  top: 45%; left: 4%;
+  width: 170px; height: 130px;
+  padding: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transform: rotate(-4deg);
+  text-align: center;
+  line-height: 1.3;
+}
+.mabel-sweaters-photo {
+  top: 15%; 
+  left: 42%; /* Dopasowane idealnie do środka tablicy, obok trójkąta */
+  width: 140px; 
+  height: 160px;
+  border: 6px solid #fff;
+  transform: rotate(4deg);
+  position: absolute;
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.4);
+  z-index: 3;
+}
+.mabel-sweaters-photo img {
+  width: 100%;
+  height: 100%;
+ object-fit: cover;
+}
+
+/* 4. Rysunek Trójkąta Billa - Zewnętrzny Portal Link (Wolny środek tablicy pod Bill-photo) */
+.triangle-link-drawing {
+  top: 42%; left: 26%;
+  width: 100px; height: 100px;
+  background: transparent;
+  box-shadow: none !important; /* Usuwamy tradycyjny cień kartki */
+  transform: rotate(-10deg);
+}
+.triangle-svg {
+  width: 100%; height: 100%;
+}
+.triangle-svg polygon {
+  fill: rgba(214, 168, 79, 0.15);
+  stroke: #d6a84f;
+  stroke-width: 3;
+  transition: fill 0.3s;
+}
+.triangle-svg circle {
+  fill: none; stroke: #d6a84f; stroke-width: 3;
+}
+.triangle-svg line {
+  stroke: #d6a84f; stroke-width: 2;
+}
+
+/* Podświetlenie neonowe specyficzne dla rysunku portalu */
+.triangle-link-drawing:hover {
+  transform: scale(1.15) rotate(0deg) !important;
+}
+.triangle-link-drawing:hover .triangle-svg polygon {
+  fill: rgba(214, 168, 79, 0.7); /* Wypełnia się mistycznym złotem przy najechaniu */
+}
+
+/* --- DOSTOSOWANIE MOBILNE DLA NOWYCH ELEMENTÓW --- */
+@media (max-width: 768px) {
+  .axolotl-file-icon { width: 120px; height: 95px; bottom: 6%; right: 4%; }
+  .axolotl-file-icon img { height: 55px; }
+  .dipper-name-note { width: 120px; height: 100px; font-size: 0.8rem; top: 46%; left: 2%; }
+  .mabel-sweaters-note { width: 110px; height: 100px; font-size: 0.8rem; top: 12%; right: 35%; }
+  .triangle-link-drawing { width: 65px; height: 65px; top: 44%; left: 26%; }
+}
+/* --- CUSTOMOWY, STYLIZOWANY SUWAK DLA TEKSTU W TECZKACH FBI --- */
+
+/* Ustawienie szerokości suwaka */
+.fbi-text::-webkit-scrollbar {
+  width: 8px; /* Bardzo cienki pasek zamiast grubego systemowego */
+}
+
+/* Tło toru, po którym porusza się suwak (dopasowane do koloru papieru teczki) */
+.fbi-text::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05); 
+  border-radius: 4px;
+}
+
+/* Styl samego suwaka (ciemny, pasujący do rządowego tuszu) */
+.fbi-text::-webkit-scrollbar-thumb {
+  background-color: #111625; /* Kolor granatu rządowego z nagłówka */
+  border-radius: 4px;
+  border: 1px solid #c3b091; /* Delikatny margines w kolorze papieru */
+}
+
+/* Efekt po najechaniu na suwak myszką */
+.fbi-text::-webkit-scrollbar-thumb:hover {
+  background-color: #b01717; /* Zmienia kolor na krwistą czerwień przy przewijaniu */
+}
+
+/* Wsparcie dla przeglądarki Firefox */
+.fbi-text {
+  scrollbar-width: thin;
+  scrollbar-color: #111625 rgba(0, 0, 0, 0.05);
+}
+.fbi-text {
+  padding-right: 15px; /* Daje bezpieczny dystans między tekstem a nowym suwakiem */
+}
+
+/* ==========================================================================
+   DEMONICZNA ANOMALIA BILLA CIPHERA (EFEKT ROZPIKSELOWANIA)
+   ========================================================================== */
+
+/* Pozycjonowanie elementu na tablicy korkowej (w wolnym środku) */
+.triangle-glitch-wrapper {
+  position: absolute;
+  top: 42%; 
+  left: 26%;
+  z-index: 5;
+}
+
+.triangle-link-drawing {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  transform: rotate(-10deg);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.triangle-svg { width: 100%; height: 100%; }
+.triangle-svg polygon { fill: rgba(214, 168, 79, 0.05); stroke: #d6a84f; stroke-width: 3; transition: fill 0.3s; }
+.triangle-svg circle { fill: none; stroke: #d6a84f; stroke-width: 3; }
+.triangle-svg line { stroke: #d6a84f; stroke-width: 2; }
+
+.triangle-link-drawing:hover {
+  transform: scale(1.15) rotate(0deg);
+}
+.triangle-link-drawing:hover .triangle-svg polygon {
+  fill: rgba(214, 168, 79, 0.4); /* Podświetlenie przy najechaniu */
+}
+
+/* ==========================================================================
+   POPRAWIONY TIMING ANOMALII BILLA (NAJPIERW PIKSELE, POTEM JUMPSCARE)
+   ========================================================================== */
+
+/* Pełnoekranowa nakładka */
+.bill-glitch-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  background-color: rgba(0, 0, 0, 0);
+  display: none !important; /* Domyślnie ukryty */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Włączenie nakładki po kliknięciu trójkąta */
+.bill-glitch-overlay.glitch-active {
+  display: flex !important;
+  pointer-events: auto;
+  opacity: 1 !important;
+  animation: dissolveReality 3s cubic-bezier(0.15, 0.85, 0.45, 1) forwards;
+}
+
+/* --- DUŻO MOCNIEJSZA, BARDZIEJ WIDOCZNA SIATKA RETRO PIKSELI --- */
+.bill-glitch-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* Zwiększyłem krycie (z 0.4 na 0.7) i pogrubiłem linie siatki z 3px do 4px, aby piksele były super widoczne */
+  background-image: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.7) 50%), 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.03), rgba(0, 0, 255, 0.08));
+  background-size: 100% 4px, 4px 100%; 
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+
+/* Piksele włączają się od razu w pierwszej milisekundzie */
+.bill-glitch-overlay.glitch-active::after {
+  opacity: 1;
+  transition: opacity 0.1s ease;
+}
+
+/* Animacja tła (Najpierw czerwona panika, potem gęsta czerń) */
+@keyframes dissolveReality {
+  0% { background-color: rgba(0, 0, 0, 0); }
+  5% { background-color: rgba(176, 23, 23, 0.6); } /* Mocniejszy czerwony błysk błędu systemu */
+  35% { background-color: rgba(5, 10, 7, 0.99); } /* Przejście w mroczną, głęboką czerń */
+  85% { background-color: rgba(5, 10, 7, 0.99); }
+  100% { background-color: #000000; }
+}
+
+/* --- KINOWE OPÓŹNIENIE JUMPSCARE'U (GIF-A) --- */
+.bill-jumpscare {
+  position: relative;
+  z-index: 50;
+  text-align: center;
+  transform: scale(0.4);
+  opacity: 0;
+  display: block !important;
+}
+
+/* Wywołanie i ruch GIF-a na ekranie Z OPÓŹNIENIEM */
+.bill-glitch-overlay.glitch-active .bill-jumpscare {
+  /* 1.8s to czas trwania ruchu, a 1.2s na końcu to sztywne OPÓŹNIENIE (delay). Bill wyskoczy dopiero po 1.2 sekundy! */
+  animation: billReveal 1.8s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+@keyframes billReveal {
+  0% { opacity: 0; transform: scale(0.4) rotate(-15deg); }
+  15% { opacity: 1; transform: scale(1.1) rotate(0deg); } /* Gwałtowny wyskok demona */
+  25% { transform: scale(1) rotate(1deg); }
+  60% { transform: scale(1.05) rotate(-1deg); filter: hue-rotate(0deg) contrast(140%); }
+  85% { transform: scale(0.98) rotate(0deg); filter: hue-rotate(180deg) contrast(180%); } /* Demoniczna zmiana kolorów pod koniec */
+  100% { opacity: 0; transform: scale(0.7); filter: blur(10px); } /* Rozmycie na wyjściu */
+}
+
+/* Wymiary i blask wokół gifa */
+.bill-jumpscare img {
+  max-width: 450px;
+  width: 90%;
+  height: auto;
+  border: 4px solid #d6a84f;
+  box-shadow: 0 0 60px rgba(214, 168, 79, 0.5);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Tekst pod gifem */
+.bill-warning-text {
+  font-family: 'Courier New', monospace;
+  color: #d6a84f;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  margin-top: 1.5rem;
+  text-shadow: 0 0 15px #d6a84f;
+  animation: textGlitchPulse 0.3s infinite alternate;
+}
+
+@keyframes textGlitchPulse {
+  from { opacity: 0.7; transform: skewX(-3deg); }
+  to { opacity: 1; transform: skewX(3deg); color: #ff0000; }
+}
+
+/* ==========================================================================
+   DODATKOWY INTERAKTYWNY EFEKT LATARKI UV (NIE NARUSZA STRUKTURY DZIENNIKA)
+   ========================================================================== */
+
+/* Ukrycie technicznego checkboxa włącznika */
+.uv-toggle-checkbox {
+  display: none !important;
+}
+
+/* Stylizacja przycisku włącznika w prawym górnym rogu ekranu */
+.uv-button {
+  position: fixed !important;
+  top: 6rem !important;
+  right: 2rem !important;
+  z-index: 999999 !important; /* Absolutny szczyt nad całą stroną i menu */
+  background-color: #7b1e1e !important;
+  color: #f4e6c1 !important;
+  padding: 0.8rem 1.2rem !important;
+  font-family: monospace !important;
+  font-weight: bold !important;
+  border: 2px solid #d6a84f !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.uv-button:hover {
+  background-color: #d6a84f !important;
+  color: #1b1009 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Zmiana wyglądu przycisku, gdy tryb UV jest aktywny */
+.uv-toggle-checkbox:checked + .uv-button {
+  background-color: #4a154b !important;
+  color: #00ffff !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 15px #4a154b !important;
+}
+
+/* --- POZYCJONOWANIE I LOGIKA WARSTW GRAFICZNYCH (Zwykła vs UV) --- */
+
+/* Stan początkowy: ukrywamy nakładane zdjęcia UV, dopóki włącznik jest wyłączony */
+.page-uv {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important; /* Kliknięcia przechodzą do normalnej warstwy pod spodem, by przewracać strony */
+  opacity: 0 !important; /* Zdjęcie UV jest całkowicie niewidoczne w spoczynku */
+  transition: opacity 0.3s ease !important;
+}
+
+/* --- ZMIANY WIZUALNE PO WŁĄCZENIU ŚWIATŁA UV --- */
+
+/* 1. Twoje normalne zdjęcia stron pod spodem mocno ciemnieją i tracą kontrast */
+.uv-toggle-checkbox:checked ~ .journal-page .page-normal,
+.uv-toggle-checkbox:checked ~ main .page-normal {
+  filter: brightness(0.28) contrast(85%) sepia(20%) !important;
+}
+
+/* 2. Zdjęcia UV stają się aktywne i wycinają ruchomy okrąg wokół koordynatów myszki */
+.uv-toggle-checkbox:checked ~ .journal-page .page-uv,
+.uv-toggle-checkbox:checked ~ main .page-uv {
+  opacity: 1 !important;
+  /* Maskowanie clip-path: okrąg o wielkości 140px śledzi pozycję kursora z kodu JS */
+  clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
+  -webkit-clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
+}
+
+/* 3. Ukrywamy standardową strzałkę myszki Windows nad całym obszarem pamiętnika */
+.uv-toggle-checkbox:checked ~ .journal-page,
+.uv-toggle-checkbox:checked ~ main {
+  cursor: none !important;
+}
+.uv-toggle-checkbox:checked ~ .journal-page *,
+.uv-toggle-checkbox:checked ~ main * {
+  cursor: none !important;
+}
+
+/* --- MROCZNY OVERLAY (FIOLETOWO-CZARNA POŚWIATA WOKÓŁ LATARKI) --- */
+.uv-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important; /* Nad książką, pod przyciskiem TOGGLE */
+  pointer-events: none !important;
+  background: transparent !important;
+  display: none !important;
+}
+
+/* Uruchomienie ciemnego pokoju po kliknięciu włącznika */
+.uv-toggle-checkbox:checked ~ .uv-overlay {
+  display: block !important;
+  /* Gradient symulujący snop fioletowego światła latarki, reszta ekranu gaśnie do głębokiej czerni */
+  background: radial-gradient(
+    circle 140px at var(--pointer-x, 50%) var(--pointer-y, 50%), 
+    rgba(147, 51, 234, 0.02) 0%, 
+    rgba(74, 21, 75, 0.35) 60%, 
+    rgba(0, 0, 0, 0.96) 80%
+  ) !important;
+}
+
+/* ==========================================================================
+   NADPISANIE FILTRU UV DLA AUTENTYCZNYCH ZDJĘĆ Z PLIKU
+   ========================================================================== */
+.uv-toggle-checkbox:checked ~ .journal-page .page-uv,
+.uv-toggle-checkbox:checked ~ main .page-uv {
+  opacity: 1 !important;
+  /* Dynamiczne wycinanie okręgu za pomocą kursora */
+  clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
+  -webkit-clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
+  /* Wyłączenie sztucznego fioletu i pokazanie naturalnych kolorów Twojego pliku */
+  filter: brightness(1.1) saturate(110%) !important; 
+}

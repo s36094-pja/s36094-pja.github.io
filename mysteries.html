@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gravity Falls Mysteries - Case Files</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Nagłówek i Menu Nawigacyjne -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="index.html.html">Forest</a>
+      <a href="journal-found.html">Found Journal</a>
+      <a href="journal.html">Journal</a>
+      <a href="creatures.html">Creatures</a>
+      <a href="mysteries.html">Mysteries</a>
+    </nav>
+  </header>
+
+  <main class="mysteries-page">
+    <h1>Gravity Falls Secret Files</h1>
+    <p class="mysteries-intro">Click on any note or evidence to open the official government case file.</p>
+
+    <!-- TABLICA KORKOWA ŚLEDCZEGO -->
+    <div class="corkboard-container">
+      <div class="corkboard">
+        
+        <!-- Elementy tablicy (zdjęcia i karteczki jako linki otwierające teczki) -->
+        <a href="#file-bill" class="board-item bill-photo">
+          <img src="img/bill-cipher-sketch.jpg" alt="Bill Cipher Case">
+        </a>
+
+        <a href="#file-author" class="board-item note-yellow author-note">
+          <span>The real author of Journal 3?</span>
+        </a>
+
+        <a href="#file-618" class="board-item note-white code-618">
+          <span>618</span>
+        </a>
+
+        <a href="#file-mcgucket" class="board-item mcgucket-photo">
+          <img src="img/mcgucket-evidence.jpg" alt="Old Man McGucket">
+        </a>
+
+        <a href="#file-twins" class="board-item note-yellow twins-note">
+          <span>THE CONSERVATION OF TWINS</span>
+        </a>
+
+        <!-- 1. Teczka Axolotl (Prawy dolny róg) -->
+        <a href="#file-axolotl" class="board-item axolotl-file-icon">
+          <img src="img/Axolotlll.jpg" alt="Axolotl Cosmic File">
+          <span class="file-label">PROJECT: REINCARNATION</span>
+        </a>
+
+        <!-- 2. Karteczka: Prawdziwe imię Dippera (Pośrodku z lewej) -->
+        <a href="#file-dipper-name" class="board-item note-white dipper-name-note">
+          <span>Dipper's real name is...</span>
+        </a>
+
+        <!-- 3. Zdjęcie Mabel (Przeniesione na bezpieczną pozycję obok kodu 618) -->
+        <a href="#file-mabel-sweaters" class="board-item mabel-sweaters-photo">
+          <img src="img/mabel.jpg" alt="Mabel's Sweaters Investigation">
+        </a>
+
+      !-- WYSTYLIZOWANA KARTECZKA Z TRÓJKĄTEM I GLITCHEM -->
+<div class="board-item triangle-glitch-wrapper">
+  <a href="javascript:void(0);" class="triangle-link-drawing" onclick="triggerBillAnomaly();" title="DO NOT TRUST HIM">
+   <svg viewBox="0 0 100 100" class="triangle-svg">
+  <polygon points="50,15 15,85 85,85" /> <!-- Kształt 1 -->
+  <circle cx="50" cy="55" r="10" />      <!-- Kształt 2 -->
+  <line x1="35" y1="55" x2="65" y2="55" /> <!-- Kształt 3 -->
+  <line x1="50" y1="35" x2="50" y2="42" /> <!-- Kształt 4 -->
+  <line x1="20" y1="85" x2="20" y2="92" /> <!-- Kształt 5 -->
+</svg>
+  </a>
+</div>
+
+        <!-- Sznurki spiskowe w tle tablicy -->
+        <div class="conspiracy-strings"></div>
+      </div> <!-- Koniec .corkboard -->
+    </div> <!-- Koniec .corkboard-container -->
+
+    <!-- SEKCJA SZYFRÓW -->
+    <section class="cipher-section">
+      <h2>Cipher Section</h2>
+      <p class="encrypted-text">zhofrph wr judylwb idoov</p>
+      <p class="cipher-hint">Caesar cipher, shift 3</p>
+    </section>
+
+    <!-- TECZKA 1: BILL CIPHER -->
+    <div id="file-bill" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #12: THE TRIANGLE ANOMALY</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/bill-close-up.jpg" alt="Subject Profile">
+            <p class="stamp-classified">CLASSIFIED</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: Hidden Symbols & Ciphers</h3>
+            <p><strong>Threat Level:</strong> Catastrophic</p>
+            <p><strong>Description:</strong> Hidden codes appear throughout the series. Fans decoded dozens of secret messages hidden in credits, backgrounds and journals.</p>
+            <p><strong>Investigation Notes:</strong> Do not shake his hand. Do not let him enter your mind. He is watching.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="file-mabel-sweaters" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #67: MABEL PINES' SWEATERS</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/mabels-sweaters.png" alt="Evidence #3">
+            <p class="stamp-classified">CONFIDENTIAL</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: Mabel's Sweaters</h3>
+            <p><strong>Status:</strong> Active</p>
+            <p><strong>Description:</strong> Mabel wears a different sweater in almost every episode.</p>
+            <p><strong>Investigation Notes:</strong> Many designs reflect her mood, personality or the themes of a particular episode. Shooting stars, rainbows, hearts and unusual creatures often mirror the emotions Mabel experiences during the story.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECZKA 2: THE AUTHOR -->
+    <div id="file-author" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #03: THE JOURNAL CREATOR</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/journal-cover.jpg" alt="Evidence #1">
+            <p class="stamp-classified">CONFIDENTIAL</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: The Six-Fingered Author</h3>
+            <p><strong>Status:</strong> Missing since 1982</p>
+            <p><strong>Description:</strong> The mysterious individual who documented the paranormal anomalies of Gravity Falls in three hidden notebooks.</p>
+            <p><strong>Investigation Notes:</strong> Traces leads to a hidden underground bunker beneath the forest. High risk of technological traps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECZKA 3: CODE 618 -->
+    <div id="file-618" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #618: RECURRING NUMERICAL ANOMALY</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/code-618-evidence.png" alt="Evidence #2">
+            <p class="stamp-classified">TOP SECRET</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: The Number 618</h3>
+            <p><strong>Type:</strong> Spatial/Temporal Glitch</p>
+            <p><strong>Observations:</strong> The digits '618' appear repeatedly across town. Found on license plates, cash registers, clock faces, and ancient wall carvings.</p>
+            <p><strong>Investigation Notes:</strong> Appears to be a fundamental anchor point of this dimension's reality. Coincides with Alex Hirsch's birth date (June 18th).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="file-mcgucket" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #45: THE MCGUCKET CONSPIRACY</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/mcgucket.jpg" alt="Evidence #3">
+            <p class="stamp-classified">CONFIDENTIAL</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: The Mcgucket Brothers</h3>
+            <p><strong>Status:</strong> Active</p>
+            <p><strong>Description:</strong> Twin brothers with a history of involvement in supernatural activities and mysterious disappearances.</p>
+            <p><strong>Investigation Notes:</strong> Their whereabouts are unknown since the incident at the Mystery Shack.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!-- TECZKA: THE AXOLOTL (Z Twoją pełną fabułą) -->
+    <div id="file-axolotl" class="case-file-overlay">
+      <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #99: THE COSMIC ABSOLUTION</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <!-- Grafika z zewnętrznego serwera - wymóg 17 punktów -->
+            <img src="img/axolotl-evidence1.png" alt="The Axolotl Profile">
+            <p class="stamp-classified">COSMIC RISK</p>
+          </div>
+          <div class="fbi-text" style="max-height: 380px; overflow-y: auto;">
+            <h3>Subject: The Axolotl-Final Theory</h3>
+            <p><strong>Observation:</strong> Shortly before destruction, Cipher relayed a reversed message: <em>"A-X-O-L-O-T-L! My time has come to burn! I invoke the ancient power that I may return!"</em></p>
+            <p><strong>The Prophecy Poem:</strong></p>
+            <blockquote style="font-style: italic; border-left: 2px solid #b01717; padding-left: 10px; margin: 5px 0;">
+              Sixty degrees that come in threes.<br>
+              Watches from within birch trees.<br>
+              Saw his own dimension burn.<br>
+              Misses home and can't return.<br>
+              Says he's happy. He's a liar.<br>
+              Blame the arson for the fire.<br>
+              If he wants to shirk the blame,<br>
+              He'll have to invoke my name.<br>
+              One way to absolve his crime.<br>
+              A different form, a different time.
+            </blockquote>
+            <p><strong>Conclusion:</strong> Bill Cipher might still exist, paying for his crimes in a completely different form and dimension.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECZKA: DIPPER'S REAL NAME -->
+    <div id="file-dipper-name" class="case-file-overlay">
+      <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #05: IDENTITY RECORDS</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            
+            <p class="stamp-classified">CONFIDENTIAL</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: "Dipper" Pines true identity</h3>
+            <p><strong>True Name:</strong> Mason Pines</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECZKA: THE TWINS -->
+    <div id="file-twins" class="case-file-overlay">
+        <div class="fbi-loading">OPENING CASE FILE...</div>
+      <div class="fbi-folder">
+        <div class="fbi-header">
+          <span class="fbi-badge">FEDERAL BUREAU OF INVESTIGATION</span>
+          <h2>CASE FILE #78: THE TWINS' SECRET</h2>
+          <a href="#" class="close-file-btn">CLOSE FILE</a>
+        </div>
+        <div class="fbi-content">
+          <div class="fbi-photos">
+            <img src="img/twins.png" alt="Evidence #4">
+            <p class="stamp-classified">CLASSIFIED</p>
+          </div>
+          <div class="fbi-text">
+            <h3>Subject: The Conservation of Twins</h3>
+            <p><strong>Investigation Notes:</strong> Alex Hirsch described an internal writing rule known as the 'Conservation of Twins'. According to this principle, Dipper and Mabel must remain narratively balanced. If one twin gains confidence, power or emotional growth, the other often receives a corresponding challenge. This rule helped maintain the unique dynamic at the heart of the series.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="bill-portal" class="bill-glitch-overlay">
+  <div class="pixel-grid"></div>
+  <div class="bill-jumpscare">
+    <img src="img/bill-jumpscare.gif" alt="BILL CIPHER IS WATCHING">
+    <p class="bill-warning-text">I'M WATCHING YOU</p>
+  </div>
+</div>
+
+  </main>
+
+  <footer>
+    <p>Autor: Hanna Stoikova | s36094</p>
+  </footer>
+
+<!-- MINI-SKRYPT OBSŁUGUJĄCY OPÓŹNIENIE PORTALU -->
+<script>
+  function triggerBillAnomaly() {
+    const portal = document.getElementById('bill-portal');
+    // Aktywacja anomalii wizualnej
+    portal.classList.add('glitch-active');
+    
+    // Odczekaj 3 sekundy (czas trwania animacji) i otwórz zewnętrzną stronę w nowej karcie
+    setTimeout(() => {
+      window.open('https://thisisnotawebsitedotcom.com', '_blank');
+      // Resetujemy portal, by po powrocie tablica wyglądała normalnie
+      portal.classList.remove('glitch-active');
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>

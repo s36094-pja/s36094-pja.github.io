@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Journal 3</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- GLOBALNY PRZEŁĄCZNIK ŚWIATŁA UV (Wymagany do działania stylów!) -->
+  <input type="checkbox" id="uv-switch" class="uv-toggle-checkbox">
+
+  <!-- PRZYCISK W ROGU EKRANU STYLIZOWANY NA WŁĄCZNIK -->
+  <label for="uv-switch" class="uv-button" title="Toggle UV Blacklight">
+    <span class="bulb-icon">💡</span> TOGGLE BLACKLIGHT
+  </label>
+
+  <!-- Nagłówek i Menu Nawigacyjne -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="index.html">Forest</a>
+      <a href="journal-found.html">Found Journal</a>
+      <a href="journal.html">Journal</a>
+      <a href="creatures.html">Creatures</a>
+      <a href="mysteries.html">Mysteries</a>
+    </nav>
+  </header>
+
+  <!-- NAKŁADKA PRZYCIEMNIAJĄCA POKÓJ -->
+  <div class="uv-overlay"></div>
+ 
+  <main class="journal-page">
+    <section class="flip-journal">
+      <h1>Journal #3</h1>
+
+      <p class="intro-text">
+        Click the cover to open the journal. Click the right page to continue
+        and the left page to go back.
+      </p>
+
+      <div class="journal-book" id="journalBook">
+        <div class="journal-spread" id="journalSpread">
+
+          <!-- LEWA STRONA (Poprawnie domknięta) -->
+          <div class="journal-side left-side" id="leftSide">
+            <img id="leftPage" src="img/journal-page-1.jpg" alt="Journal page" class="page-normal">
+            <img id="leftPageUV" src="img/journal-page-1-uv.jpg" alt="Journal page UV" class="page-uv">
+          </div> <!-- NAPRAWIONO: Dodano brakujące zamknięcie lewej strony -->
+
+          <!-- PRAWA STRONA -->
+          <div class="journal-side right-side" id="rightSide">
+            <img id="rightPage" src="img/journal-page-2.jpg" alt="Journal page" class="page-normal"> <!-- NAPRAWIONO: Dodano klasę page-normal -->
+            <img id="rightPageUV" src="img/journal-page-2-uv.jpg" alt="Journal page UV" class="page-uv">
+          </div>
+          
+        </div> <!-- Koniec #journalSpread -->
+
+        <div class="cover-turn" id="journalCover">
+          <div class="cover-front">
+            <img src="img/journal-cover.jpg" alt="Journal 3 cover">
+          </div>
+        </div>
+      </div> <!-- Koniec #journalBook -->
+
+      <div class="journal-note">
+        <h2>Research Notes</h2>
+
+        <article class="entry">
+          <h3>Entry #1</h3>
+          <p>
+            The woods are strange. Every path seems to lead deeper into the
+            forest, as if the trees are rearranging themselves behind me.
+          </p>
+        </article>
+
+        <article class="entry">
+          <h3>Entry #8</h3>
+          <p>
+            A six-fingered symbol was carved into old wood near the trail.
+            It does not look natural. Someone wanted it to be found.
+          </p>
+        </article>
+
+        <article class="entry">
+          <h3>Entry #17</h3>
+          <p>
+            Gnomes confirmed. Small, organized and more dangerous than they
+            look. They seem harmless until they move as one group.
+          </p>
+        </article>
+
+        <article class="entry">
+          <h3>Entry #29</h3>
+          <p>
+            Something lives underground. I heard scratching below the floorboards
+            near the Mystery Shack after midnight.
+          </p>
+        </article>
+      </div>
+
+      <div class="journal-actions">
+        <a href="creatures.html" class="btn">OPEN CREATURE FILES</a>
+        <a href="mysteries.html" class="btn">OPEN MYSTERIES</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Autor: Hanna Stoikova, numer studenta: s36094</p>
+  </footer>
+
+  <script>
+    const pages = [
+      "img/journal-page-1.jpg",
+      "img/journal-page-2.jpg",
+      "img/journal-page-3.jpg",
+      "img/journal-page-4.jpg",
+      "img/journal-page-5.jpg",
+      "img/journal-page-6.jpg",
+      "img/journal-page-7.jpg",
+      "img/journal-page-8.jpg",
+      "img/journal-page-9.jpg",
+      "img/journal-page-10.jpg",
+      "img/journal-page-11.jpg",
+      "img/journal-page-12.jpg"
+    ];
+
+    // 2. NOWOŚĆ: Tablica z Twoimi fizycznymi plikami UV zapisanymi na sztywno
+    const pagesUV = [
+      "img/journal-page-1-uv.jpg",
+      "img/journal-page-2-uv.jpg",
+      "img/journal-page-3-uv.jpg",
+      "img/journal-page-4-uv.jpg",
+      "img/journal-page-5-uv.jpg",
+      "img/journal-page-6-uv.jpg",
+      "img/journal-page-7-uv.jpg",
+      "img/journal-page-8-uv.jpg",
+      "img/journal-page-9-uv.jpg",
+      "img/journal-page-10-uv.jpg",
+      "img/journal-page-11-uv.jpg",
+      "img/journal-page-12-uv.jpg"
+    ];
+
+    let currentPage = 0;
+    let isOpen = false;
+
+    const journalBook = document.getElementById("journalBook");
+    const journalCover = document.getElementById("journalCover");
+    const leftPage = document.getElementById("leftPage");
+    const rightPage = document.getElementById("rightPage");
+    const leftPageUV = document.getElementById("leftPageUV");
+    const rightPageUV = document.getElementById("rightPageUV");
+    const leftSide = document.getElementById("leftSide");
+    const rightSide = document.getElementById("rightSide");
+
+    // Sztywne przypisanie bez używania funkcji .replace(), co omija blokadę bezpieczeństwa CORS
+    function showPages() {
+      leftPage.src = pages[currentPage];
+      rightPage.src = pages[currentPage + 1];
+      
+      leftPageUV.src = pagesUV[currentPage];
+      rightPageUV.src = pagesUV[currentPage + 1];
+    }
+
+    journalCover.addEventListener("click", function () {
+      if (!isOpen) {
+        isOpen = true;
+        showPages();
+        journalBook.classList.add("opened");
+        setTimeout(function () {
+          journalCover.classList.add("hidden");
+        }, 700);
+      }
+    });
+
+    rightSide.addEventListener("click", function () {
+      if (currentPage + 2 < pages.length) {
+        currentPage += 2;
+        rightSide.classList.add("turn-forward");
+        setTimeout(function () {
+          showPages();
+          rightSide.classList.remove("turn-forward");
+        }, 600);
+      }
+    });
+
+    leftSide.addEventListener("click", function () {
+      if (currentPage - 2 >= 0) {
+        currentPage -= 2;
+        leftSide.classList.add("turn-back");
+        setTimeout(function () {
+          showPages();
+          leftSide.classList.remove("turn-back");
+        }, 600);
+      }
+    });
+
+    // Śledzenie pozycji myszki dla maski CSS
+    document.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--pointer-x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--pointer-y', e.clientY + 'px');
+    });
+  </script>
+</body>
+</html>
