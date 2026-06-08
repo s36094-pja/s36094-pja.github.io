@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
@@ -1133,3 +1134,6 @@ footer p {
   /* Wyłączenie sztucznego fioletu i pokazanie naturalnych kolorów Twojego pliku */
   filter: brightness(1.1) saturate(110%) !important; 
 }
+=======
+
+>>>>>>> 9d4662d6509a82c7694a1350c84e5ea605717dee
