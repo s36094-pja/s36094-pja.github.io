@@ -40,7 +40,7 @@
         </a>
 
         <a href="#file-mcgucket" class="board-item mcgucket-photo">
-          <img src="img/mcgucket-evidence.jpg" alt="Old Man McGucket">
+          <img src="img/mcgucket.jpg" alt="Old Man McGucket">
         </a>
 
         <a href="#file-twins" class="board-item note-yellow twins-note">
@@ -63,7 +63,7 @@
           <img src="img/mabel.jpg" alt="Mabel's Sweaters Investigation">
         </a>
 
-      !-- WYSTYLIZOWANA KARTECZKA Z TRÓJKĄTEM I GLITCHEM -->
+    
 <div class="board-item triangle-glitch-wrapper">
   <a href="javascript:void(0);" class="triangle-link-drawing" onclick="triggerBillAnomaly();" title="DO NOT TRUST HIM">
    <svg viewBox="0 0 100 100" class="triangle-svg">
@@ -300,7 +300,6 @@
     <p>Autor: Hanna Stoikova | s36094</p>
   </footer>
 
-<!-- MINI-SKRYPT OBSŁUGUJĄCY OPÓŹNIENIE PORTALU -->
 <script>
   function triggerBillAnomaly() {
     const portal = document.getElementById('bill-portal');
@@ -310,7 +309,6 @@
     // Odczekaj 3 sekundy (czas trwania animacji) i otwórz zewnętrzną stronę w nowej karcie
     setTimeout(() => {
       window.open('https://thisisnotawebsitedotcom.com', '_blank');
-      // Resetujemy portal, by po powrocie tablica wyglądała normalnie
       portal.classList.remove('glitch-active');
     }, 3000);
   }
