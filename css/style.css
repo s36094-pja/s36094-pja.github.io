@@ -857,7 +857,7 @@ footer p {
   background-color: #b01717; /* Zmienia kolor na krwistą czerwień przy przewijaniu */
 }
 
-/* Wsparcie dla przeglądarki Firefox */
+/* Wsparcie dla przeglądarki */
 .fbi-text {
   scrollbar-width: thin;
   scrollbar-color: #111625 rgba(0, 0, 0, 0.05);
@@ -866,11 +866,6 @@ footer p {
   padding-right: 15px; /* Daje bezpieczny dystans między tekstem a nowym suwakiem */
 }
 
-/* ==========================================================================
-   DEMONICZNA ANOMALIA BILLA CIPHERA (EFEKT ROZPIKSELOWANIA)
-   ========================================================================== */
-
-/* Pozycjonowanie elementu na tablicy korkowej (w wolnym środku) */
 .triangle-glitch-wrapper {
   position: absolute;
   top: 42%; 
@@ -900,11 +895,6 @@ footer p {
   fill: rgba(214, 168, 79, 0.4); /* Podświetlenie przy najechaniu */
 }
 
-/* ==========================================================================
-   POPRAWIONY TIMING ANOMALII BILLA (NAJPIERW PIKSELE, POTEM JUMPSCARE)
-   ========================================================================== */
-
-/* Pełnoekranowa nakładka */
 .bill-glitch-overlay {
   position: fixed !important;
   top: 0 !important;
@@ -1012,124 +1002,4 @@ footer p {
 @keyframes textGlitchPulse {
   from { opacity: 0.7; transform: skewX(-3deg); }
   to { opacity: 1; transform: skewX(3deg); color: #ff0000; }
-}
-
-/* ==========================================================================
-   DODATKOWY INTERAKTYWNY EFEKT LATARKI UV (NIE NARUSZA STRUKTURY DZIENNIKA)
-   ========================================================================== */
-
-/* Ukrycie technicznego checkboxa włącznika */
-.uv-toggle-checkbox {
-  display: none !important;
-}
-
-/* Stylizacja przycisku włącznika w prawym górnym rogu ekranu */
-.uv-button {
-  position: fixed !important;
-  top: 6rem !important;
-  right: 2rem !important;
-  z-index: 999999 !important; /* Absolutny szczyt nad całą stroną i menu */
-  background-color: #7b1e1e !important;
-  color: #f4e6c1 !important;
-  padding: 0.8rem 1.2rem !important;
-  font-family: monospace !important;
-  font-weight: bold !important;
-  border: 2px solid #d6a84f !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-  transition: all 0.3s ease !important;
-}
-
-.uv-button:hover {
-  background-color: #d6a84f !important;
-  color: #1b1009 !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Zmiana wyglądu przycisku, gdy tryb UV jest aktywny */
-.uv-toggle-checkbox:checked + .uv-button {
-  background-color: #4a154b !important;
-  color: #00ffff !important;
-  border-color: #00ffff !important;
-  box-shadow: 0 0 15px #4a154b !important;
-}
-
-/* --- POZYCJONOWANIE I LOGIKA WARSTW GRAFICZNYCH (Zwykła vs UV) --- */
-
-/* Stan początkowy: ukrywamy nakładane zdjęcia UV, dopóki włącznik jest wyłączony */
-.page-uv {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: none !important; /* Kliknięcia przechodzą do normalnej warstwy pod spodem, by przewracać strony */
-  opacity: 0 !important; /* Zdjęcie UV jest całkowicie niewidoczne w spoczynku */
-  transition: opacity 0.3s ease !important;
-}
-
-/* --- ZMIANY WIZUALNE PO WŁĄCZENIU ŚWIATŁA UV --- */
-
-/* 1. Twoje normalne zdjęcia stron pod spodem mocno ciemnieją i tracą kontrast */
-.uv-toggle-checkbox:checked ~ .journal-page .page-normal,
-.uv-toggle-checkbox:checked ~ main .page-normal {
-  filter: brightness(0.28) contrast(85%) sepia(20%) !important;
-}
-
-/* 2. Zdjęcia UV stają się aktywne i wycinają ruchomy okrąg wokół koordynatów myszki */
-.uv-toggle-checkbox:checked ~ .journal-page .page-uv,
-.uv-toggle-checkbox:checked ~ main .page-uv {
-    opacity: 1 !important;
-    clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
-    -webkit-clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
-    filter: brightness(1.1) saturate(110%) !important; /* <-- Filtr znajduje się teraz wewnątrz reguły */
-}
-
-/* 3. Ukrywamy standardową strzałkę myszki Windows nad całym obszarem pamiętnika */
-.uv-toggle-checkbox:checked ~ .journal-page,
-.uv-toggle-checkbox:checked ~ main {
-  cursor: none !important;
-}
-.uv-toggle-checkbox:checked ~ .journal-page *,
-.uv-toggle-checkbox:checked ~ main * {
-  cursor: none !important;
-}
-
-/* --- MROCZNY OVERLAY (FIOLETOWO-CZARNA POŚWIATA WOKÓŁ LATARKI) --- */
-.uv-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9999 !important; /* Nad książką, pod przyciskiem TOGGLE */
-  pointer-events: none !important;
-  background: transparent !important;
-  display: none !important;
-}
-
-/* Uruchomienie ciemnego pokoju po kliknięciu włącznika */
-#uv-toggle-checkbox:checked ~ .uv-overlay {
-  display: block !important;
-  /* Gradient symulujący snop fioletowego światła latarki, reszta ekranu gaśnie do głębokiej czerni */
-  background: radial-gradient(
-    circle 140px at var(--pointer-x, 50%) var(--pointer-y, 50%), 
-    rgba(147, 51, 234, 0.02) 0%, 
-    rgba(74, 21, 75, 0.35) 60%, 
-    rgba(0, 0, 0, 0.96) 80%
-  ) !important;
-}
-
-/* ==========================================================================
-   NADPISANIE FILTRU UV DLA AUTENTYCZNYCH ZDJĘĆ Z PLIKU
-   ========================================================================== */
-.uv-toggle-checkbox:checked ~ .journal-page .page-uv,
-.uv-toggle-checkbox:checked ~ main .page-uv {
-  opacity: 1 !important;
-  /* Dynamiczne wycinanie okręgu za pomocą kursora */
-  clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
-  -webkit-clip-path: circle(140px at var(--pointer-x, 50%) var(--pointer-y, 50%)) !important;
-  /* Wyłączenie sztucznego fioletu i pokazanie naturalnych kolorów Twojego pliku */
-  filter: brightness(1.1) saturate(110%) !important; 
 }
